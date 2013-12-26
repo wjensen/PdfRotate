@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.Practices.Unity;
+using RDI.MVC.Controllers;
+using RDI.MVC.Models.Documents;
 
 namespace RDI.Api
 {
@@ -16,12 +19,20 @@ namespace RDI.Api
     {
         protected void Application_Start()
         {
+            ConfigureApi(GlobalConfiguration.Configuration);
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+        void ConfigureApi(HttpConfiguration config)
+        {
+            var unity = new UnityContainer();
+            unity.RegisterType<DocumentsController>();
+            unity.RegisterType<IDocumentRepository, DocumentRepository>("Document");
+            config.DependencyResolver = new IoCContainer(unity);
         }
     }
 }

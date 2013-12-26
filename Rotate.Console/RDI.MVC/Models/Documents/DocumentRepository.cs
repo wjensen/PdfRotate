@@ -24,6 +24,7 @@ namespace RDI.MVC.Models.Documents
             var doc = new Document();
            
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
+
             //var tempSql = "SELECT DOC FROM DOCS WHERE DOC_ID = " + id;
 
             //var cmd = new SqlCommand(tempSql, con);
@@ -42,26 +43,30 @@ namespace RDI.MVC.Models.Documents
             return doc;
         }
 
-        public void RotateDocument(Pdf.Rotationtype rotationtype, int id)
+        public Document RotateDocument(Pdf.Rotationtype rotationtype, int id)
         {
-            var doc = new Document();
-            doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
-            var ms = new MemoryStream(doc.BodyBytes);
-            //ms.Write(doc.BodyBytes, 0, doc.BodyBytes.Length);
-            var docstream = Pdf.Rotate(rotationtype, ms);
+            var doc = GetDocument(id);
+            
+            var docstream = Pdf.Rotate(rotationtype, new MemoryStream(doc.BodyBytes));
 
             using (var file = new FileStream(@"D:\Prototypes\PdfRotate\rotated2.pdf", FileMode.Create, FileAccess.Write))
             {
-                var bw = new BinaryWriter(file);
-                var bytes = new byte[docstream.Length];
-                docstream.Read(bytes, 0, (int)docstream.Length);
-                bw.Write(bytes);
-                bw.Close();
-                //file.Write(bytes, 0, bytes.Length);
+                using(var bw = new BinaryWriter(file))
+                {
+                    var bytes = new byte[docstream.Length];
+                    docstream.Read(bytes, 0, (int)docstream.Length);
+                    bw.Write(bytes);
+                    bw.Close();
+                }
+
                 docstream.Close();
             }
 
-            //return null;
+            using (var br = new BinaryReader(docstream))
+            {
+                doc.BodyBytes = br.ReadBytes((int) docstream.Length);
+            }
+            return doc;
         }
     }
 }
