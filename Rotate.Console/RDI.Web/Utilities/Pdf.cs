@@ -41,11 +41,11 @@ namespace RDI.Web.Utilities
             var matrix = new PdfMatrix();
             matrix.Rotate(r);
             matrix.Translate(tX, tY);
-           
             pdfPage.Transform(matrix);
             var stream = new MemoryStream();
-            pdf.Save(docstream);
-            return docstream;
+            pdf.Save(stream);
+            stream.Position = 0;
+            return stream;
         }
         /// <summary>
         /// Switch page orientation from landscape to portrait or visa versa

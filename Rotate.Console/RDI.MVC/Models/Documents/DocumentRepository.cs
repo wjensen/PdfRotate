@@ -9,7 +9,7 @@ using RDI.Web.Utilities;
 
 namespace RDI.MVC.Models.Documents
 {
-    class DocumentRepository : IDocumentRepository
+    public class DocumentRepository : IDocumentRepository
     {
         private SqlConnection con;
         private void OpenCon()
@@ -46,9 +46,20 @@ namespace RDI.MVC.Models.Documents
         {
             var doc = new Document();
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
-            var docstream = Pdf.Rotate(rotationtype, new MemoryStream(doc.BodyBytes));
+            var ms = new MemoryStream(doc.BodyBytes);
+            //ms.Write(doc.BodyBytes, 0, doc.BodyBytes.Length);
+            var docstream = Pdf.Rotate(rotationtype, ms);
 
-          
+            using (var file = new FileStream(@"D:\Prototypes\PdfRotate\rotated2.pdf", FileMode.Create, FileAccess.Write))
+            {
+                var bw = new BinaryWriter(file);
+                var bytes = new byte[docstream.Length];
+                docstream.Read(bytes, 0, (int)docstream.Length);
+                bw.Write(bytes);
+                bw.Close();
+                //file.Write(bytes, 0, bytes.Length);
+                docstream.Close();
+            }
 
             //return null;
         }

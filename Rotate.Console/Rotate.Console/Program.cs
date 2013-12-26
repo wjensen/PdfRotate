@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using RDI.MVC.Models.Documents;
 using RDI.Web.Utilities;
 
 
@@ -15,6 +16,9 @@ namespace Rotate.Console
             //var pdf = new Pdf();
             //const string path = @"D:\Prototypes\PdfRotate\unrotated.pdf";
             //pdf.Rotate(Pdf.Rotationtype.Half180, new FileStream());
+
+            DocumentRepository dr = new DocumentRepository();
+            dr.RotateDocument(Pdf.Rotationtype.Half180, 1);
         }
     }
 }
