@@ -12,7 +12,7 @@ namespace Rotate.Console
     {
         static void Main(string[] args)
         {
-            var pdf = new Pdf();
+            //var pdf = new Pdf();
             //const string path = @"D:\Prototypes\PdfRotate\unrotated.pdf";
             //pdf.Rotate(Pdf.Rotationtype.Half180, new FileStream());
         }

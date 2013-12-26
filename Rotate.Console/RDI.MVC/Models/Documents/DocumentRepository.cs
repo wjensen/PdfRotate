@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
+using RDI.Web.Utilities;
 
 namespace RDI.MVC.Models.Documents
 {
@@ -39,6 +40,21 @@ namespace RDI.MVC.Models.Documents
             //con.Close();
 
             return doc;
+        }
+
+        public Document RotateDocument(Pdf.Rotationtype rotationtype, int id)
+        {
+            var doc = new Document();
+            doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
+            var docstream = Pdf.Rotate(rotationtype, new MemoryStream(doc.BodyBytes));
+
+            using (var br = new BinaryReader(docstream))
+            {
+                br.ReadBytes((int) docstream.Length);
+                doc.BodyBytes = br.t;
+            }
+
+            return null;
         }
     }
 }

@@ -3,5 +3,6 @@
     interface IDocumentRepository
     {
         Document GetDocument(int id);
+        
     }
 }

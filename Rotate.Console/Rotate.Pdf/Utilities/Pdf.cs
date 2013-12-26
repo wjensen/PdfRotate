@@ -5,10 +5,10 @@ using EO.Pdf.Drawing;
 
 namespace RDI.Web.Utilities
 {
-    public class Pdf
+    public static class Pdf
     {
         public enum Rotationtype{ Clock90 = -1, Count90 = 1, Half180 = 2}
-        public void Rotate(Rotationtype rtype, Stream docstream)
+        public static Stream Rotate(Rotationtype rtype, Stream docstream)
         {
            
             var pdf = new PdfDocument(docstream);
@@ -41,17 +41,18 @@ namespace RDI.Web.Utilities
             var matrix = new PdfMatrix();
             matrix.Rotate(r);
             matrix.Translate(tX, tY);
-            
+           
             pdfPage.Transform(matrix);
-            
-          
+            var stream = new MemoryStream();
+            pdf.Save(docstream);
+            return docstream;
         }
         /// <summary>
         /// Switch page orientation from landscape to portrait or visa versa
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        private PdfSize GetReorientedPage(PdfPage page)
+        private static PdfSize  GetReorientedPage(PdfPage page)
         {
             return new PdfSize(page.Size.Height, page.Size.Width);
         }      
