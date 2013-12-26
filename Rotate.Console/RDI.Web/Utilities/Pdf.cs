@@ -7,7 +7,7 @@ namespace RDI.Web.Utilities
 {
     public static class Pdf
     {
-        public enum Rotationtype{ Clock90 = -1, Count90 = 1, Half180 = 2}
+        public enum Rotationtype{ Right = -1, Left = 1, Flip = 2}
         public static Stream Rotate(Rotationtype rtype, Stream docstream)
         {
            
@@ -16,19 +16,19 @@ namespace RDI.Web.Utilities
             float r, tX, tY;
             switch (rtype)
             {
-                case Rotationtype.Clock90:
+                case Rotationtype.Right:
                     pdfPage.Size = GetReorientedPage(pdfPage);
                     tX = (72*(float) rtype)*pdfPage.Size.Height;
                     tY = 0;
                     r = 90*(float) rtype;
                     break;
-                case Rotationtype.Count90:
+                case Rotationtype.Left:
                     pdfPage.Size = GetReorientedPage(pdfPage);
                     tX = 0;
                     tY = -72 * pdfPage.Size.Width;
                     r = 90 * (float)rtype;
                     break;
-                case Rotationtype.Half180:
+                case Rotationtype.Flip:
                     tX = -72 * pdfPage.Size.Width;
                     tY = -72 * pdfPage.Size.Height;
                     r = -90 * (float)rtype;

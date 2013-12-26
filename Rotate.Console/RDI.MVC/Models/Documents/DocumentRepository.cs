@@ -24,6 +24,7 @@ namespace RDI.MVC.Models.Documents
             var doc = new Document();
            
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
+            doc.Filename = "This Is a pdf file";
 
             //var tempSql = "SELECT DOC FROM DOCS WHERE DOC_ID = " + id;
 

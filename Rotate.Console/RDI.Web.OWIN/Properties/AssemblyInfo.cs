@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RDI.Web.Markup")]
+[assembly: AssemblyTitle("RDI.Web.OWIN")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RDI.Web.Markup")]
+[assembly: AssemblyProduct("RDI.Web.OWIN")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fcdd49ff-259e-4aa0-8c19-734417b09534")]
+[assembly: Guid("5b67c838-11b5-4fc8-803e-0761c27a08c0")]
 
 // Version information for an assembly consists of the following four values:
 //

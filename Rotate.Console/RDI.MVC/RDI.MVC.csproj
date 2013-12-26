@@ -91,6 +91,7 @@
     <Compile Include="Models\Documents\IDocumentRepository.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PdfEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RDI.Web\RDI.Web.csproj">

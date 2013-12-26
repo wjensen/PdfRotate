@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+  <title>@Model.PdfDocument.Filename</title>
+</head>
+  <body>
+      <header>
+          <h1>@Model.PdfDocument.Filename</h1>   
+      </header>
+      <h2>Rotation</h2>
+      <select>
+          <option>None</option>
+          @Each.Rotation
+          <option>@Current</option>
+          @EndEach
+      </select>
+</body>
+</html>
