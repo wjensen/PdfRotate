@@ -42,7 +42,7 @@ namespace RDI.MVC.Models.Documents
             return doc;
         }
 
-        public Document RotateDocument(Pdf.Rotationtype rotationtype, int id)
+        public void RotateDocument(Pdf.Rotationtype rotationtype, int id)
         {
             var doc = new Document();
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
@@ -50,7 +50,7 @@ namespace RDI.MVC.Models.Documents
 
           
 
-            return null;
+            //return null;
         }
     }
 }
