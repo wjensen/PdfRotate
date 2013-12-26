@@ -48,11 +48,7 @@ namespace RDI.MVC.Models.Documents
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
             var docstream = Pdf.Rotate(rotationtype, new MemoryStream(doc.BodyBytes));
 
-            using (var br = new BinaryReader(docstream))
-            {
-                br.ReadBytes((int) docstream.Length);
-                doc.BodyBytes = br.t;
-            }
+          
 
             return null;
         }
