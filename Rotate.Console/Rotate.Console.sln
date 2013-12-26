@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rotate.Console", "Rotate.Console\Rotate.Console.csproj", "{7B399881-1112-4376-9D08-DA327DBEC617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDI.Web", "Rotate.Pdf\RDI.Web.csproj", "{48FB0512-C67D-44AF-8928-A94C7406EF2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDI.Web", "RDI.Web\RDI.Web.csproj", "{48FB0512-C67D-44AF-8928-A94C7406EF2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDI.Api", "RDI.Api\RDI.Api.csproj", "{185452B9-015F-4283-906A-DB80D47954BD}"
 EndProject

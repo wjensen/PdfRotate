@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rotate.Pdf\RDI.Web.csproj">
+    <ProjectReference Include="..\RDI.Web\RDI.Web.csproj">
       <Project>{48FB0512-C67D-44AF-8928-A94C7406EF2D}</Project>
       <Name>RDI.Web</Name>
     </ProjectReference>
