@@ -5,12 +5,14 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
+using RDI.Utility;
 using RDI.Web.Utilities;
 
 namespace RDI.MVC.Models.Documents
 {
     public class DocumentRepository : IDocumentRepository
     {
+        private string cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";
         private SqlConnection con;
         private void OpenCon()
         {
@@ -21,27 +23,15 @@ namespace RDI.MVC.Models.Documents
         }
         public Document GetDocument(int id)
         {
-            var doc = new Document();
-           
-            doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
-            doc.Filename = "This Is a pdf file";
 
-            var cstring =
-                "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;User ID=rda;Password=rda";
-            //var tempSql = "SELECT DOC FROM DOCS WHERE DOC_ID = " + id;
+            var docRepository = new RDIDocuments(cstring);
 
-            //var cmd = new SqlCommand(tempSql, con);
-
-            //OpenCon();
-            //var rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
-
-            //while (rdr.Read())
-            //{
-            //    int byteLen = (int)rdr.GetBytes(0, 0, null, 0, 0);
-            //    doc.BodyBytes = new byte[byteLen];
-            //}
-
-            //con.Close();
+            var doc = new Document
+                          {
+                              BodyBytes = docRepository.GetDocument(id),
+                              Filename = docRepository.GetDocumentFileName(id),
+                              MimeType = docRepository.GetDocumentMimeType(id)
+                          };
 
             return doc;
         }
