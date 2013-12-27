@@ -134,6 +134,10 @@
       <Project>{806D7F73-AB31-4478-A096-28835F0D45CA}</Project>
       <Name>RDI.MVC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RDI.Web\RDI.Web.csproj">
+      <Project>{48FB0512-C67D-44AF-8928-A94C7406EF2D}</Project>
+      <Name>RDI.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

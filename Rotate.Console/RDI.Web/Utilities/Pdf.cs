@@ -7,15 +7,16 @@ namespace RDI.Web.Utilities
 {
     public static class Pdf
     {
-        public enum Rotationtype{ Right = -1, Left = 1, Flip = 2}
+        public enum Rotationtype{None = 0, Right = -1, Left = 1, Flip = 2}
         public static Stream Rotate(Rotationtype rtype, Stream docstream)
         {
-           
             var pdf = new PdfDocument(docstream);
             var pdfPage = pdf.Pages[0];
             float r, tX, tY;
             switch (rtype)
             {
+                case Rotationtype.None:
+                    return docstream;
                 case Rotationtype.Right:
                     pdfPage.Size = GetReorientedPage(pdfPage);
                     tX = (72*(float) rtype)*pdfPage.Size.Height;

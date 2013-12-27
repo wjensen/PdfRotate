@@ -1,21 +1,36 @@
 ﻿<!DOCTYPE html>
 <html >
 <head>
-  <title>@Model.Document.Filename</title>
+    <title>@Model.Document.Filename</title>
+    
 </head>
-  <body>
-      <header>
-          <h1>@Model.Document.Filename</h1>   
-      </header>
-      <div id="pdf">
-    <iframe width="400" height="500" src="stream/@Model.Document.Id/None" id="pdf_content" />
-</div>
-      <h2>Rotation</h2>
-      <select>
-          <option>None</option>
-          @Each.Rotation
-          <option>@Current</option>
-          @EndEach
-      </select>
-</body>
+    <body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+          <script>
+              var rotateUrl = "stream/@Model.Document.Id/";
+              $(document).ready(function () {
+                  console.log("ready");
+                  $(".rotate-select").change(function () {
+                      var rotation = $(this).find(":selected").text();
+                      console.log(rotateUrl + rotation);
+                      $("#pdf_content").attr("src", rotateUrl + rotation);
+                  });
+              });
+        </script>  
+        <header>
+            <h1>@Model.Document.Filename</h1>   
+        </header>
+        <h2>Rotation</h2>
+        <select class="rotate-select">
+            @Each.Rotation
+            <option>@Current</option>
+            @EndEach
+        </select>
+      
+        <div> 
+            <iframe width="400" height="500" src="stream/@Model.Document.Id/None" id="pdf_content" />
+        </div>
+
+    </body>
+    
 </html>

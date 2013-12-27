@@ -46,8 +46,9 @@ namespace RDI.MVC.Models.Documents
         public Document RotateDocument(Pdf.Rotationtype rotationtype, int id)
         {
             var doc = GetDocument(id);
-            
-            var docstream = Pdf.Rotate(rotationtype, new MemoryStream(doc.BodyBytes));
+            if (rotationtype == Pdf.Rotationtype.None) return doc;
+            Stream stream = new MemoryStream(doc.BodyBytes);
+            var docstream = Pdf.Rotate(rotationtype, stream);
 
             //using (var file = new FileStream(@"D:\Prototypes\PdfRotate\rotated2.pdf", FileMode.Create, FileAccess.Write))
             //{
@@ -66,8 +67,13 @@ namespace RDI.MVC.Models.Documents
             {
                 doc.BodyBytes = br.ReadBytes((int) docstream.Length);
             }
-            
-            return UpdateDocument(doc);
+
+            return doc;
+        }
+
+        public string GetFileName(int id)
+        {
+            return _docRepository.GetDocumentFileName(id);
         }
     }
 }
