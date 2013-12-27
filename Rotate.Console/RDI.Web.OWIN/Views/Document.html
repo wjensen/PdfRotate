@@ -7,6 +7,9 @@
       <header>
           <h1>@Model.Document.Filename</h1>   
       </header>
+      <div id="pdf">
+    <iframe width="400" height="500" src="stream/@Model.Document.Id/None" id="pdf_content" />
+</div>
       <h2>Rotation</h2>
       <select>
           <option>None</option>
