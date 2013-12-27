@@ -492,7 +492,7 @@ namespace RDI.Utility
 
             var p2 = new SqlParameter("@Id", SqlDbType.BigInt) {Value = id};
 
-            using (var cmd = new SqlCommand("RDI_Doc_AddDocument", con) {CommandType = CommandType.StoredProcedure})
+            using (var cmd = new SqlCommand("RDI_Doc_UpdateDocument", con) {CommandType = CommandType.StoredProcedure})
             {
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
