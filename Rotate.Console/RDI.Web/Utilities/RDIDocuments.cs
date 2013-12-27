@@ -483,6 +483,26 @@ namespace RDI.Utility
 				return -1;
 			}
 		}
+
+        public void UpdateDocument(byte[] doc, int id)
+        {
+
+
+            var p1 = new SqlParameter("@Doc", SqlDbType.Image, doc.Length) {Value = doc};
+
+            var p2 = new SqlParameter("@Id", SqlDbType.BigInt) {Value = id};
+
+            using (var cmd = new SqlCommand("RDI_Doc_AddDocument", con) {CommandType = CommandType.StoredProcedure})
+            {
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                OpenCon();
+                cmd.CommandTimeout = 240;
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+        }
 	}
 
     public class DocumentMetaData
