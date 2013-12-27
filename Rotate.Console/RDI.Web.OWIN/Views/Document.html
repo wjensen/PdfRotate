@@ -12,7 +12,6 @@
                   console.log("ready");
                   $(".rotate-select").change(function () {
                       var rotation = $(this).find(":selected").text();
-                      console.log(rotateUrl + rotation);
                       $("#pdf_content").attr("src", rotateUrl + rotation);
                   });
               });
