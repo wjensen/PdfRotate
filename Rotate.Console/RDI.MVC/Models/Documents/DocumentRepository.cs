@@ -21,9 +21,9 @@ namespace RDI.MVC.Models.Documents
             var doc = new Document
                           {
                               Id = id,
-                              BodyBytes = docRepository.GetDocument(id),
-                              Filename = docRepository.GetDocumentFileName(id),
-                              MimeType = docRepository.GetDocumentMimeType(id)
+                              BodyBytes = _docRepository.GetDocument(id),
+                              Filename = _docRepository.GetDocumentFileName(id),
+                              MimeType = _docRepository.GetDocumentMimeType(id)
                           };
 
             return doc;
