@@ -7,6 +7,7 @@ namespace RDI.Web.OWIN
         public void Configuration(IAppBuilder app)
         {
             app.UseNancy();
+            
         }
     }
 }
