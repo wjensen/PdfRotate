@@ -1,6 +1,7 @@
 ﻿using Nancy;
 using RDI.MVC.Models.Documents;
 using RDI.MVC.ViewModels;
+using RDI.MVC.ViewModels.Documents;
 
 namespace RDI.Web.OWIN
 {
@@ -13,7 +14,7 @@ namespace RDI.Web.OWIN
             Get["/{id}"] = parameters =>
             {
                 int id = parameters.id;
-                var vm = new PdfEditor { PdfDocument = new DocumentRepository().GetDocument(id) };
+                var vm = new PdfViewModel { PdfDocument = new DocumentRepository().GetDocument(id) };
                 var model = vm;
                 return View["Document", model];
             };
