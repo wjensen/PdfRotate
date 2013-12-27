@@ -14,7 +14,7 @@ namespace RDI.Web.OWIN
             Get["/{id}"] = parameters =>
             {
                 int id = parameters.id;
-                var vm = new PdfViewModel { PdfDocument = new DocumentRepository().GetDocument(id) };
+                var vm = new PdfViewModel { Document = new DocumentRepository().GetDocument(id) };
                 var model = vm;
                 return View["Document", model];
             };

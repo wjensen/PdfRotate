@@ -26,6 +26,8 @@ namespace RDI.MVC.Models.Documents
             doc.BodyBytes = File.ReadAllBytes(@"D:\Prototypes\PdfRotate\unrotated.pdf");
             doc.Filename = "This Is a pdf file";
 
+            var cstring =
+                "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;User ID=rda;Password=rda";
             //var tempSql = "SELECT DOC FROM DOCS WHERE DOC_ID = " + id;
 
             //var cmd = new SqlCommand(tempSql, con);
