@@ -12,11 +12,18 @@ namespace RDI.MVC.Models.Documents
 {
     public class DocumentRepository : IDocumentRepository
     {
-        private const string Cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";
-        private readonly RDIDocuments _docRepository = new RDIDocuments(Cstring);
-       
 
+        private readonly RDIDocuments _docRepository;
+        public DocumentRepository(string connectionString)
+        {
+            _docRepository = new RDIDocuments(connectionString);
+        }
+        public DocumentRepository()
+        {
+            var Cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";
 
+            _docRepository = new RDIDocuments(Cstring);
+        }
         public Document GetDocument(int id)
         {
 
