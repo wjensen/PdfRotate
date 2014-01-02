@@ -8,11 +8,31 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
           <script>
               var rotateUrl = "stream/@Model.Document.Id/";
+              var saveUrl = "save/@Model.Document.Id/";
+              var rotation = "None";
               $(document).ready(function () {
                   console.log("ready");
                   $(".rotate-select").change(function () {
-                      var rotation = $(this).find(":selected").text();
+                      rotation = $(this).find(":selected").text();
                       $("#pdf_content").attr("src", rotateUrl + rotation);
+                      $("#updateDiv").show("slow");
+                      $("#selectDiv").hide("slow");
+                  });
+
+                  $('#resetButton').on('click', function () {
+                      $("#pdf_content").attr("src", "stream/@Model.Document.Id/None");
+                      $("#updateDiv").hide("slow");
+                      $("#selectDiv").show("slow");
+                  });
+
+                  $('#saveButton').on('click', function () {
+                      console.log(saveUrl);
+                      $.post("save/15/" + rotation)
+                      .done(function (data) {
+                          alert("Rotation Saved");
+                      }).fail(function (event, jqxhr, settings, exception) {
+                          alert(event, jqxhr, settings, exception);
+                      });
                   });
               });
         </script>  
@@ -20,13 +40,18 @@
             <h1>@Model.Document.Filename</h1>   
         </header>
         <h2>Rotation</h2>
-        <select class="rotate-select">
-            @Each.Rotation
-            <option>@Current</option>
-            @EndEach
-        </select>
-      
-        <div> 
+        <div id="selectDiv" style="float:left">
+            <select class="rotate-select">
+                @Each.Rotation
+                <option>@Current</option>
+                @EndEach
+            </select>
+        </div>
+        <div id="updateDiv" style="float:left;display:none">
+            <input id="resetButton" value="Reset" type="button"/>
+             <input id="saveButton" value="Save Rotation" type="button"/>
+        </div>
+        <div style="clear: both"> 
             <iframe width="400" height="500" src="stream/@Model.Document.Id/None" id="pdf_content" />
         </div>
 

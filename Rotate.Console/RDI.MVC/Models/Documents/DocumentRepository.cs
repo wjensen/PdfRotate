@@ -15,6 +15,8 @@ namespace RDI.MVC.Models.Documents
         private const string Cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";
         private readonly RDIDocuments _docRepository = new RDIDocuments(Cstring);
        
+
+
         public Document GetDocument(int id)
         {
 
@@ -41,6 +43,12 @@ namespace RDI.MVC.Models.Documents
                      };
 
            return udoc;
+        }
+
+        public Document UpdateRotatedDocument(Pdf.Rotationtype rotationtype, int id)
+        {
+            var doc = RotateDocument(rotationtype, id);
+            return UpdateDocument(doc);
         }
 
         public Document RotateDocument(Pdf.Rotationtype rotationtype, int id)

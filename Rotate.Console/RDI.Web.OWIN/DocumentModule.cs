@@ -32,6 +32,16 @@ namespace RDI.Web.OWIN
                 return Response.FromStream(stream, "application/pdf");
                 
             };
+
+            Post["/save/{id}/{rotation}"] = parameters =>
+            {
+                var rotation = (Pdf.Rotationtype)Enum.Parse(typeof(Pdf.Rotationtype), parameters.rotation, true);
+                int id = parameters.id;
+                var document = new DocumentRepository().UpdateRotatedDocument(rotation, id);
+                //Stream stream = new MemoryStream(document.BodyBytes);
+                //return Response.FromStream(stream, "application/pdf");
+                return "";
+            };
         }
     }
 }
