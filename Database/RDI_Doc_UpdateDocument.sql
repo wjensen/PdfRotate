@@ -20,3 +20,24 @@ BEGIN
  
   
 END
+
+use [RDI_Development]
+GO
+GRANT EXECUTE ON [dbo].[RDI_Doc_UpdateDocument] TO [RDI_Admin]
+GO
+use [RDI_Development]
+GO
+GRANT EXECUTE ON [dbo].[RDI_Doc_UpdateDocument] TO [RDI_Branch_Manager]
+GO
+use [RDI_Development]
+GO
+GRANT EXECUTE ON [dbo].[RDI_Doc_UpdateDocument] TO [RDI_Clients]
+GO
+use [RDI_Development]
+GO
+GRANT EXECUTE ON [dbo].[RDI_Doc_UpdateDocument] TO [RDI_Employee]
+GO
+use [RDI_Development]
+GO
+GRANT EXECUTE ON [dbo].[RDI_Doc_UpdateDocument] TO [RDI_Project_Manager]
+GO
