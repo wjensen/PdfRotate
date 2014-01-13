@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using RDI.Utility;
-using RDI.Web.Utilities;
+
 
 namespace RDI.MVC.Models.Documents
 {
@@ -14,10 +14,10 @@ namespace RDI.MVC.Models.Documents
     {
 
         private readonly RDIDocuments _docRepository;
-        public DocumentRepository(string connectionString)
-        {
-            _docRepository = new RDIDocuments(connectionString);
-        }
+        //public DocumentRepository(string connectionString)
+        //{
+        //    _docRepository = new RDIDocuments(connectionString);
+        //}
         public DocumentRepository()
         {
             var Cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using Nancy;
+using Nancy.Helpers;
 using RDI.MVC.Models.Documents;
 using RDI.MVC.ViewModels;
 using RDI.MVC.ViewModels.Documents;
-using RDI.Web.Utilities;
+using RDI.Utility;
+
 
 namespace RDI.Web.OWIN
 {
@@ -15,8 +17,9 @@ namespace RDI.Web.OWIN
         {
 
             Get["/{id}"] = parameters =>
-            {
-                int id = parameters.id;
+                               {
+                                  int id = Int32.Parse(EncryptionProvider.Decrypt(HttpUtility.UrlDecode(parameters.id)));
+                //int id = parameters.id;
                 var fileName = new DocumentRepository().GetFileName(id);
                 var vm = new PdfViewModel { Document = new Document{Id = id,Filename = fileName} };
                 var model = vm;

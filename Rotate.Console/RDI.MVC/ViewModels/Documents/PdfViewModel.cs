@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RDI.MVC.Models;
-using RDI.Web.Utilities;
+using RDI.Utility;
 
 namespace RDI.MVC.ViewModels.Documents
 {

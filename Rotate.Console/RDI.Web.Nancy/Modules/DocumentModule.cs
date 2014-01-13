@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using System.Web.SessionState;
 using Nancy;
 using RDI.MVC.Models.Documents;
 using RDI.MVC.ViewModels.Documents;
-using RDI.Web.Utilities;
+using RDI.Utility;
+
 
 namespace RDI.Web.Nancy.Modules
 {
@@ -16,8 +18,9 @@ namespace RDI.Web.Nancy.Modules
 
             Get["/{id}"] = parameters =>
             {
+
                 int id = parameters.id;
-                var fileName = new DocumentRepository(HttpSessionState.Session["ConnectionString"].ToString()).GetFileName(id);
+                var fileName = new DocumentRepository().GetFileName(id);
                 var vm = new PdfViewModel { Document = new Document{Id = id,Filename = fileName} };
                 var model = vm;
                 return View["Document", model];
@@ -27,7 +30,7 @@ namespace RDI.Web.Nancy.Modules
             {
                 var rotation =(Pdf.Rotationtype)Enum.Parse(typeof (Pdf.Rotationtype), parameters.rotation, true);
                 int id = parameters.id;
-                var document = new DocumentRepository(Session["ConnectionString"].ToString()).RotateDocument(rotation, id);
+                var document = new DocumentRepository().RotateDocument(rotation, id);
                 Stream stream = new MemoryStream(document.BodyBytes);
                 return Response.FromStream(stream, "application/pdf");
                 
@@ -37,7 +40,7 @@ namespace RDI.Web.Nancy.Modules
             {
                 var rotation = (Pdf.Rotationtype)Enum.Parse(typeof(Pdf.Rotationtype), parameters.rotation, true);
                 int id = parameters.id;
-                var document = new DocumentRepository(Session["ConnectionString"].ToString()).UpdateRotatedDocument(rotation, id);
+                var document = new DocumentRepository().UpdateRotatedDocument(rotation, id);
                 //Stream stream = new MemoryStream(document.BodyBytes);
                 //return Response.FromStream(stream, "application/pdf");
                 return "";

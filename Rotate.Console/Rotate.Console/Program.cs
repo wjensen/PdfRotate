@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 //using RDI.MVC.Models.Documents;
 using RDI.MVC.Models.Documents;
-using RDI.Web.Utilities;
+using RDI.Utility;
+
 
 
 namespace Rotate.Console

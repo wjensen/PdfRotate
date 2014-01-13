@@ -3,7 +3,7 @@ using System.IO;
 using EO.Pdf;
 using EO.Pdf.Drawing;
 
-namespace RDI.Web.Utilities
+namespace RDI.Utility
 {
     public static class Pdf
     {

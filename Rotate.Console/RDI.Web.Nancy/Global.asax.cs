@@ -12,12 +12,15 @@ namespace RDI.Web.Nancy
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            //Session.Add("ConnectionString", "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI");
+            //HttpContext.Current.Session.Add("ConnectionString",
+            //    "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI");
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session.Add("ConnectionString", "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI");
+            throw new Exception("not implemented");
+            //Session.Add("ConnectionString", "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI");
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

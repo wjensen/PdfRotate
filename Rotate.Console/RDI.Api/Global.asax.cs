@@ -30,7 +30,7 @@ namespace RDI.Api
         void ConfigureApi(HttpConfiguration config)
         {
             var unity = new UnityContainer();
-            unity.RegisterType<DocumentsController>();
+            unity.RegisterType<DocumentsApiController>("DocumentsController");
             unity.RegisterType<IDocumentRepository, DocumentRepository>("Document");
             config.DependencyResolver = new IoCContainer(unity);
         }
