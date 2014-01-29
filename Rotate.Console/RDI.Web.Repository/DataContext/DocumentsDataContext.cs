@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RDI.MVC.Models.Documents;
 using RDI.Utility;
+using RDI.Web.Model.Documents;
 
 namespace RDI.Web.Repository.DataContext
 {
-    class DocumentsDataContext :IDataContext<Document>
+    public class DocumentsDataContext : IDataContext<Document>
     {
         private readonly RDIDocuments _docRepository;
-        //public DocumentRepository(string connectionString)
-        //{
-        //    _docRepository = new RDIDocuments(connectionString);
-        //}
+
+
         public DocumentsDataContext()
         {
             var Cstring = "Data Source=SQL-Intranet2.resdat.com;Initial Catalog=RDI_Development;Integrated Security=SSPI";
@@ -31,14 +29,15 @@ namespace RDI.Web.Repository.DataContext
             throw new NotImplementedException();
         }
  
-        public Document GetbyId(object id)
+        public Document Get(object id)
         {
+            var docId = int.Parse(id.ToString());
             var doc = new Document
             {
-                Id = int.Parse(id.ToString()),
-                BodyBytes = _docRepository.GetDocument(id),
-                Filename = _docRepository.GetDocumentFileName(id),
-                MimeType = _docRepository.GetDocumentMimeType(id)
+                Id = docId,
+                BodyBytes = _docRepository.GetDocument(docId),
+                Filename = _docRepository.GetDocumentFileName(docId),
+                MimeType = _docRepository.GetDocumentMimeType(docId)
             };
 
             return doc;
@@ -46,15 +45,18 @@ namespace RDI.Web.Repository.DataContext
 
         public Document Set(Document item)
         {
-            throw new NotImplementedException();
+            _docRepository.UpdateDocument(item.BodyBytes, item.Id);
+            var udoc = new Document
+            {
+                BodyBytes = _docRepository.GetDocument(item.Id),
+                Filename = _docRepository.GetDocumentFileName(item.Id),
+                MimeType = _docRepository.GetDocumentMimeType(item.Id)
+            };
+
+            return udoc;
         }
 
-        public Document Set(object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Document Delete(Document item)
+        public IEnumerable<Document> Set(List<Document> items)
         {
             throw new NotImplementedException();
         }

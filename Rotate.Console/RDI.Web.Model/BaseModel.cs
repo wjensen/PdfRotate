@@ -1,8 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System.IO;
+using System.Runtime.Serialization;
 
-using System.IO;
-
-namespace RDI.MVC.Models
+namespace RDI.Web.Model
 {
     public abstract class BaseModel : IModel
     {

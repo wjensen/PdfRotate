@@ -6,7 +6,7 @@ using RDI.Web.Repository.DataContext;
 
 namespace RDI.Web.Repository
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository
     {
         
     }

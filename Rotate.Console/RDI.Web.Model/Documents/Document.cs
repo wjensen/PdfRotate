@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RDI.MVC.Models.Documents
+namespace RDI.Web.Model.Documents
 {
     public class Document : BaseModel
     {

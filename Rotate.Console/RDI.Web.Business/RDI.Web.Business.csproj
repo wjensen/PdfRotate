@@ -40,8 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DocumentsBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDI.Web.Model\RDI.Web.Model.csproj">
+      <Project>{DD7CF51C-6E57-4D8B-800B-4608147ECAAB}</Project>
+      <Name>RDI.Web.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDI.Web.Repository\RDI.Web.Repository.csproj">
+      <Project>{9A7B16EF-C1DE-47D7-A329-97CBDB8C857E}</Project>
+      <Name>RDI.Web.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDI.Web\RDI.Web.csproj">
+      <Project>{48FB0512-C67D-44AF-8928-A94C7406EF2D}</Project>
+      <Name>RDI.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

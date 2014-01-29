@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RDI.MVC.Models
+﻿namespace RDI.Web.Model
 {
     public interface IModel
     {

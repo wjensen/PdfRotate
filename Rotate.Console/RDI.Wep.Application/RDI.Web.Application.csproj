@@ -106,11 +106,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\DocumentApiController.cs" />
+    <Compile Include="Controllers\MVC\PdfEditController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HttpModules\BasicAuthHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PdfViewmodel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -128,17 +131,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDI.MVC\RDI.MVC.csproj">
-      <Project>{806D7F73-AB31-4478-A096-28835F0D45CA}</Project>
-      <Name>RDI.MVC</Name>
+    <ProjectReference Include="..\RDI.Web.Business\RDI.Web.Business.csproj">
+      <Project>{4BB67296-211C-4E45-BEE7-BC96E8022D6D}</Project>
+      <Name>RDI.Web.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RDI.Web.Model\RDI.Web.Model.csproj">
+      <Project>{DD7CF51C-6E57-4D8B-800B-4608147ECAAB}</Project>
+      <Name>RDI.Web.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDI.Web.Repository\RDI.Web.Repository.csproj">
+      <Project>{9A7B16EF-C1DE-47D7-A329-97CBDB8C857E}</Project>
+      <Name>RDI.Web.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PdfEdit\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

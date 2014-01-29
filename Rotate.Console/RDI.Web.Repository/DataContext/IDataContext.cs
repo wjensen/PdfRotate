@@ -6,10 +6,9 @@ namespace RDI.Web.Repository.DataContext
     public interface IDataContext<T> : IDisposable
     {
         IEnumerable<T> Get();
-        T GetbyId(object id);
+        T Get(object id);
         T Set(T item);
-        T Set(object id);
-        T Delete(T item);
+        IEnumerable<T> Set(List<T> items);
         T Delete(object id);
     }
 }
